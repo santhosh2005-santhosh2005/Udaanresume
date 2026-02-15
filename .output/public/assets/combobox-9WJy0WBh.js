@@ -1,0 +1,2 @@
+import{$o as e,Fn as t,Mi as n,_r as r,gr as i,us as a,vr as o,yr as s}from"./vendor-react-gjGAI-RM.js";var c=a();const l=()=>Object.entries(o).map(([e,t])=>({value:e,label:n.t(t),keywords:[n.t(t)]}));function u(n){let{i18n:a}=e();return(0,c.jsx)(t,{options:l(),defaultValue:a.locale,onValueChange:async e=>{!e||!i(e)||(await Promise.all([r(e),s({data:e})]),window.location.reload())},...n})}export{l as n,u as t};
+//# sourceMappingURL=combobox-9WJy0WBh.js.map

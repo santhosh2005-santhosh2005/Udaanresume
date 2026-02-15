@@ -1,0 +1,2 @@
+import{Gi as e,us as t}from"./vendor-react-gjGAI-RM.js";import{m as n}from"./sidebar-QgvIf9qi.js";var r=t();function i({title:t,icon:i,className:a}){return(0,r.jsxs)(`div`,{className:e(`relative flex items-center justify-center gap-x-2.5 md:justify-start`,a),children:[(0,r.jsx)(n,{className:`absolute start-0 md:hidden`}),(0,r.jsx)(i,{weight:`light`,className:`size-5`}),(0,r.jsx)(`h1`,{className:`font-medium text-xl tracking-tight`,children:t})]})}export{i as t};
+//# sourceMappingURL=header-BiySzjZa.js.map

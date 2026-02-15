@@ -1,0 +1,141 @@
+import { t } from "@lingui/core/macro";
+import { Trans } from "@lingui/react/macro";
+import { ArrowRightIcon } from "@phosphor-icons/react";
+import { Link } from "@tanstack/react-router";
+import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { CometCard } from "@/components/animation/comet-card";
+import { Spotlight } from "@/components/animation/spotlight";
+import { Button } from "@/components/ui/button";
+
+export function Hero() {
+	const videoRef = useRef<HTMLVideoElement>(null);
+	const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+	const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+
+	useEffect(() => {
+		// Defer video loading slightly to prioritize critical content
+		const timer = setTimeout(() => {
+			setShouldLoadVideo(true);
+		}, 100);
+
+		return () => clearTimeout(timer);
+	}, []);
+
+	return (
+		<section
+			id="hero"
+			className="relative flex min-h-svh w-svw flex-col items-center justify-center overflow-hidden border-b py-24"
+		>
+			<Spotlight />
+
+			<motion.div
+				initial={{ opacity: 0, y: 100 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 1.5, ease: "easeOut" }}
+			>
+				<CometCard glareOpacity={0} className="relative -mb-12 3xl:max-w-7xl max-w-4xl px-8 md:-mb-24 md:px-12 lg:px-0">
+					{/* Placeholder while video loads */}
+					{!isVideoLoaded && (
+						<div className="pointer-events-none size-full rounded-lg border bg-gradient-to-br from-primary/10 via-primary/5 to-background animate-pulse"
+							style={{ aspectRatio: '16/9' }}
+						/>
+					)}
+
+					{shouldLoadVideo && (
+						<video
+							ref={videoRef}
+							loop
+							muted
+							autoPlay
+							playsInline
+							preload="metadata"
+							onLoadedData={() => setIsVideoLoaded(true)}
+							src="/videos/timelapse.mp4"
+							aria-label={t`Timelapse demonstration of building a resume with UdaanResume`}
+							className={`pointer-events-none size-full rounded-lg border object-cover transition-opacity duration-500 ${isVideoLoaded ? 'opacity-100' : 'opacity-0 absolute'
+								}`}
+						/>
+					)}
+
+					<div
+						aria-hidden="true"
+						className="pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-40% via-transparent to-background"
+					/>
+				</CometCard>
+			</motion.div>
+
+			<div className="relative z-10 flex max-w-2xl flex-col items-center gap-y-6 px-4 xs:px-0 text-center">
+				{/* Badge */}
+				{/* Badge */}
+
+				{/* Headline */}
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, delay: 1 }}
+				>
+					<Trans>
+						<p className="font-medium text-muted-foreground tracking-tight md:text-lg">A part of UdaanIQ</p>
+						<h1 className="mt-1 font-bold text-4xl tracking-tight md:text-5xl lg:text-6xl">
+							A free resume builder
+						</h1>
+					</Trans>
+				</motion.div>
+
+				{/* Description */}
+				<motion.p
+					className="max-w-xl text-base text-muted-foreground leading-relaxed md:text-lg"
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, delay: 1.2 }}
+				>
+					<Trans>
+						UdaanResume is a free resume builder that simplifies the process of creating, updating,
+						and sharing your resume.
+					</Trans>
+				</motion.p>
+
+				{/* CTA Buttons */}
+				<motion.div
+					className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4"
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, delay: 1.4 }}
+				>
+					<Button asChild size="lg" className="group relative overflow-hidden px-4">
+						<Link to="/dashboard">
+							<span className="relative z-10 flex items-center gap-2">
+								<Trans>Get Started</Trans>
+								<ArrowRightIcon
+									aria-hidden="true"
+									className="size-4 transition-transform group-hover:translate-x-0.5"
+								/>
+							</span>
+						</Link>
+					</Button>
+
+
+				</motion.div>
+			</div>
+
+			{/* Scroll indicator - decorative */}
+			<motion.div
+				aria-hidden="true"
+				role="presentation"
+				className="absolute start-1/2 bottom-8 -translate-x-1/2"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 2, duration: 1 }}
+			>
+				<motion.div
+					className="flex h-8 w-5 items-start justify-center rounded-full border border-muted-foreground/30 p-1.5"
+					animate={{ y: [0, 5, 0] }}
+					transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+				>
+					<motion.div className="h-1.5 w-1 rounded-full bg-muted-foreground/50" />
+				</motion.div>
+			</motion.div>
+		</section>
+	);
+}

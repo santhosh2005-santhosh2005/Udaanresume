@@ -1,0 +1,21 @@
+import { s as __toESM } from "../_runtime.mjs";
+import { i as require_jsx_runtime } from "./lingui__react+react.mjs";
+import { s as require_react } from "./@ai-sdk/react+[...].mjs";
+import { m as Primitive } from "./@radix-ui/react-accordion+[...].mjs";
+var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
+var import_jsx_runtime = require_jsx_runtime();
+var NAME = "Label";
+var Label = import_react.forwardRef((props, forwardedRef) => {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.label, {
+		...props,
+		ref: forwardedRef,
+		onMouseDown: (event) => {
+			if (event.target.closest("button, input, select, textarea")) return;
+			props.onMouseDown?.(event);
+			if (!event.defaultPrevented && event.detail > 1) event.preventDefault();
+		}
+	});
+});
+Label.displayName = NAME;
+var Root = Label;
+export { Root as t };
