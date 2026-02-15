@@ -44,8 +44,20 @@ LABEL org.opencontainers.image.url="https://rxresu.me"
 LABEL org.opencontainers.image.documentation="https://docs.rxresu.me"
 LABEL org.opencontainers.image.source="https://github.com/amruthpillai/reactive-resume"
 
-RUN apt-get update && apt-get install -y --no-install-recommends curl \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    chromium \
+    fonts-ipafont-gothic \
+    fonts-wqy-zenhei \
+    fonts-thai-tlwg \
+    fonts-kacst \
+    fonts-freefont-ttf \
+    libxss1 \
     && rm -rf /var/lib/apt/lists/*
+
+# Set Puppeteer to use the installed Chromium
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 WORKDIR /app
 
