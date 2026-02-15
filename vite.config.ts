@@ -12,7 +12,8 @@ const config = defineConfig({
 	},
 
 	ssr: {
-		external: ["pdfjs-dist", "mammoth", "@aws-crypto/crc32", "@aws-sdk/client-s3"],
+		external: ["pdfjs-dist", "mammoth"],
+		noExternal: ["@aws-crypto/crc32", "@aws-sdk/client-s3"],
 	},
 
 	resolve: {
