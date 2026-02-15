@@ -17,9 +17,10 @@ const config = defineConfig({
 
 	resolve: {
 		tsconfigPaths: true,
-		alias: {
-			"@aws-crypto/crc32": "@aws-crypto/crc32/dist/index.js",
-		},
+	},
+
+	optimizeDeps: {
+		exclude: ["@aws-crypto/crc32"],
 	},
 
 	build: {
