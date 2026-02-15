@@ -13,15 +13,10 @@ const config = defineConfig({
 
 	ssr: {
 		external: ["pdfjs-dist", "mammoth"],
-		noExternal: ["@aws-crypto/crc32", "@aws-sdk/client-s3"],
 	},
 
 	resolve: {
 		tsconfigPaths: true,
-	},
-
-	optimizeDeps: {
-		exclude: ["@aws-crypto/crc32"],
 	},
 
 	build: {
