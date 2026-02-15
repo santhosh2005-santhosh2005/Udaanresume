@@ -12,6 +12,7 @@ const config = defineConfig({
 	},
 
 	ssr: {
+		// Externalize dependencies that don't play well with SSR bundling
 		external: ["pdfjs-dist", "mammoth"],
 	},
 
