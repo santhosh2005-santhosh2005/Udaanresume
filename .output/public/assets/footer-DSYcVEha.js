@@ -1,2 +1,0 @@
-import{Bi as e,Qi as t,us as n}from"./vendor-react-gjGAI-RM.js";import{t as r}from"./copyright-1RsDkQ7n.js";var i=n();function a(){return(0,i.jsx)(t.footer,{id:`footer`,className:`p-4 pb-8 md:p-8 md:pb-12`,initial:{opacity:0},whileInView:{opacity:1},viewport:{once:!0},transition:{duration:.6},children:(0,i.jsxs)(`div`,{className:`flex flex-col items-center justify-between gap-y-4 md:flex-row`,children:[(0,i.jsx)(e,{variant:`logo`,className:`h-8 w-auto`}),(0,i.jsx)(r,{})]})})}export{a as Footer};
-//# sourceMappingURL=footer-DSYcVEha.js.map

@@ -1,2 +1,0 @@
-import{Bi as e,as as t,us as n}from"./vendor-react-gjGAI-RM.js";var r=n();function i(){return(0,r.jsxs)(`div`,{className:`mx-auto flex h-svh w-dvw max-w-sm flex-col justify-center space-y-6 px-4 xs:px-0`,children:[(0,r.jsx)(e,{className:`mb-4 size-20 self-center`}),(0,r.jsx)(t,{})]})}export{i as component};
-//# sourceMappingURL=route-CSmFlzzg.js.map

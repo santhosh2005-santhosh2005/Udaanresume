@@ -1,4 +1,4 @@
-import { a as __require, t as __commonJSMin } from "../_runtime.mjs";
+import { i as __require, t as __commonJSMin } from "../_runtime.mjs";
 var require_mitt = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = function(n) {
 		return {

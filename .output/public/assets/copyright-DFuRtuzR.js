@@ -1,0 +1,2 @@
+import{Gi as e,us as t}from"./vendor-react-Bhh2tWxN.js";var n=t();function r({className:t,...r}){return(0,n.jsx)(`div`,{className:e(`text-muted-foreground/80 text-xs leading-relaxed`,t),...r,children:(0,n.jsxs)(`p`,{children:[`© `,new Date().getFullYear(),` UdaanResume by UdaanIQ`]})})}export{r as t};
+//# sourceMappingURL=copyright-DFuRtuzR.js.map

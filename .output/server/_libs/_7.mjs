@@ -1,3 +1,3 @@
-import "./@aws-sdk/client-s3+[...].mjs";
-import { t as fromHttp } from "./@aws-sdk/credential-provider-http+[...].mjs";
-export { fromHttp };
+import { t as require_token } from "./vercel__oidc.mjs";
+export default require_token();
+export {};

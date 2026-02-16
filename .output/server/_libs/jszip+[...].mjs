@@ -1,4 +1,4 @@
-import { a as __require, t as __commonJSMin } from "../_runtime.mjs";
+import { i as __require, t as __commonJSMin } from "../_runtime.mjs";
 import { t as require_isarray } from "./isarray.mjs";
 import { t as require_util } from "./core-util-is.mjs";
 import { t as require_inherits } from "./inherits.mjs";

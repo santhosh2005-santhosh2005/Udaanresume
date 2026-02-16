@@ -1,2 +1,3 @@
-import { C as BrowserWebSocketTransport } from "./puppeteer-core.mjs";
-export { BrowserWebSocketTransport };
+import { v as require_src } from "./@puppeteer/browsers+[...].mjs";
+export default require_src();
+export {};

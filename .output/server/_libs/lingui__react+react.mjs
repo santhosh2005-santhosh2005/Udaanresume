@@ -1,4 +1,4 @@
-import { s as __toESM, t as __commonJSMin } from "../_runtime.mjs";
+import { o as __toESM, t as __commonJSMin } from "../_runtime.mjs";
 import { s as require_react } from "./@ai-sdk/react+[...].mjs";
 /**
 * @license React

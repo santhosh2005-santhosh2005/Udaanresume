@@ -1,0 +1,2 @@
+import{o as e}from"./rolldown-runtime-Bhmf7a9N.js";import{Ri as t,Rt as n,fs as r,qt as i,us as a}from"./vendor-react-Bhh2tWxN.js";import"./section-DMcCfByx.js";import{t as o}from"./preview-C3flWRfO.js";var s=e(r()),c=a();function l(){let{resume:e}=n.useLoaderData(),r=i(e=>e.isReady),a=i(e=>e.initialize);return(0,s.useEffect)(()=>{if(e)return a(e),()=>a(null)},[e,a]),r?(0,c.jsx)(o,{pageClassName:`print:w-full!`}):(0,c.jsx)(t,{})}export{l as component};
+//# sourceMappingURL=_resumeId-DpRmCHDp.js.map

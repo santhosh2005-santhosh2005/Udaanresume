@@ -1,3 +1,3 @@
-import "./@aws-sdk/client-s3+[...].mjs";
-import { t as fromIni } from "./@aws-sdk/credential-provider-ini+[...].mjs";
-export { fromIni };
+import { t as require_lib } from "./mammoth+[...].mjs";
+export default require_lib();
+export {};

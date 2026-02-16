@@ -1,4 +1,4 @@
-import { a as __require, t as __commonJSMin } from "../_runtime.mjs";
+import { i as __require, t as __commonJSMin } from "../_runtime.mjs";
 import { i as require_token_error } from "./@ai-sdk/gateway+[...].mjs";
 var require_token_io = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var __create = Object.create;

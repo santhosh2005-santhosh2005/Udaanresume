@@ -1,4 +1,4 @@
-import { s as __toESM, t as __commonJSMin } from "../../_runtime.mjs";
+import { o as __toESM, t as __commonJSMin } from "../../_runtime.mjs";
 import { i as require_jsx_runtime } from "../lingui__react+react.mjs";
 import { s as require_react } from "../@ai-sdk/react+[...].mjs";
 import { m as Primitive, p as createContextScope, u as useLayoutEffect2 } from "./react-accordion+[...].mjs";

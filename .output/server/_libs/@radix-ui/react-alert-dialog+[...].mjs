@@ -1,10 +1,10 @@
-import { s as __toESM } from "../../_runtime.mjs";
+import { o as __toESM } from "../../_runtime.mjs";
 import { i as require_jsx_runtime } from "../lingui__react+react.mjs";
 import { s as require_react } from "../@ai-sdk/react+[...].mjs";
 import { _ as require_react_dom } from "../@dnd-kit/core+[...].mjs";
 import { _ as createSlot, b as useComposedRefs, c as Presence, f as createContext2, h as dispatchDiscreteCustomEvent, l as useControllableState, m as Primitive, p as createContextScope, s as useId, u as useLayoutEffect2, v as createSlottable } from "./react-accordion+[...].mjs";
 import { t as composeEventHandlers } from "../radix-ui__primitive.mjs";
-import { d as __spreadArray, s as __assign, u as __rest } from "../@aws-crypto/crc32+[...].mjs";
+import { C as require_tslib } from "../@puppeteer/browsers+[...].mjs";
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 function useCallbackRef$1(callback) {
 	const callbackRef = import_react.useRef(callback);
@@ -419,6 +419,7 @@ function createFocusGuard() {
 	element.style.pointerEvents = "none";
 	return element;
 }
+var { __extends, __assign, __rest, __decorate, __param, __esDecorate, __runInitializers, __propKey, __setFunctionName, __metadata, __awaiter, __generator, __exportStar, __createBinding, __values, __read, __spread, __spreadArrays, __spreadArray, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet, __classPrivateFieldIn, __addDisposableResource, __disposeResources, __rewriteRelativeImportExtension } = (/* @__PURE__ */ __toESM(require_tslib())).default;
 var zeroRightClassName = "right-scroll-bar-position";
 var fullWidthClassName = "width-before-scroll-bar";
 var noScrollbarsClassName = "with-scroll-bars-hidden";

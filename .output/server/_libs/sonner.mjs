@@ -1,4 +1,4 @@
-import { s as __toESM } from "../_runtime.mjs";
+import { o as __toESM } from "../_runtime.mjs";
 import { s as require_react } from "./@ai-sdk/react+[...].mjs";
 import { _ as require_react_dom } from "./@dnd-kit/core+[...].mjs";
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);

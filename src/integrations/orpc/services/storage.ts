@@ -1,12 +1,5 @@
 import fs from "node:fs/promises";
 import { dirname, extname, join } from "node:path";
-import {
-	DeleteObjectCommand,
-	GetObjectCommand,
-	ListObjectsV2Command,
-	PutObjectCommand,
-	S3Client,
-} from "@aws-sdk/client-s3";
 import { env } from "@/utils/env";
 
 interface StorageWriteInput {
@@ -209,7 +202,9 @@ class LocalStorageService implements StorageService {
 
 class S3StorageService implements StorageService {
 	private readonly bucket: string;
-	private readonly client: S3Client;
+	private client: any;
+	private S3Client: any;
+	private commands: any;
 
 	constructor() {
 		if (!env.S3_ACCESS_KEY_ID || !env.S3_SECRET_ACCESS_KEY || !env.S3_BUCKET) {
@@ -217,26 +212,40 @@ class S3StorageService implements StorageService {
 		}
 
 		this.bucket = env.S3_BUCKET;
+	}
+
+	private async ensureClient() {
+		if (this.client) return;
+
+		// Dynamically import AWS SDK only when needed
+		const { S3Client } = await import("@aws-sdk/client-s3");
+		const commands = await import("@aws-sdk/client-s3");
+
+		this.S3Client = S3Client;
+		this.commands = commands;
+
 		this.client = new S3Client({
 			region: env.S3_REGION,
 			endpoint: env.S3_ENDPOINT,
 			forcePathStyle: env.S3_FORCE_PATH_STYLE,
 			credentials: {
-				accessKeyId: env.S3_ACCESS_KEY_ID,
-				secretAccessKey: env.S3_SECRET_ACCESS_KEY,
+				accessKeyId: env.S3_ACCESS_KEY_ID!,
+				secretAccessKey: env.S3_SECRET_ACCESS_KEY!,
 			},
 		});
 	}
 
 	async list(prefix: string): Promise<string[]> {
-		const command = new ListObjectsV2Command({ Bucket: this.bucket, Prefix: prefix });
+		await this.ensureClient();
+		const command = new this.commands.ListObjectsV2Command({ Bucket: this.bucket, Prefix: prefix });
 		const response = await this.client.send(command);
 		if (!response.Contents) return [];
 		return response.Contents.map((object) => object.Key ?? "");
 	}
 
 	async write({ key, data, contentType }: StorageWriteInput): Promise<void> {
-		const command = new PutObjectCommand({
+		await this.ensureClient();
+		const command = new this.commands.PutObjectCommand({
 			Bucket: this.bucket,
 			Key: key,
 			Body: data,
@@ -249,7 +258,8 @@ class S3StorageService implements StorageService {
 
 	async read(key: string): Promise<StorageReadResult | null> {
 		try {
-			const command = new GetObjectCommand({ Bucket: this.bucket, Key: key });
+			await this.ensureClient();
+			const command = new this.commands.GetObjectCommand({ Bucket: this.bucket, Key: key });
 			const response = await this.client.send(command);
 			if (!response.Body) return null;
 
@@ -268,13 +278,14 @@ class S3StorageService implements StorageService {
 	}
 
 	async delete(keyOrPrefix: string): Promise<boolean> {
+		await this.ensureClient();
 		// Use list to find all matching keys (handles both single file and folder/prefix)
 		const keys = await this.list(keyOrPrefix);
 
 		if (keys.length === 0) return false;
 
 		// Delete all matching keys using Promise.allSettled
-		const deleteCommands = keys.map((k) => new DeleteObjectCommand({ Bucket: this.bucket, Key: k }));
+		const deleteCommands = keys.map((k) => new this.commands.DeleteObjectCommand({ Bucket: this.bucket, Key: k }));
 		const results = await Promise.allSettled(deleteCommands.map((c) => this.client.send(c)));
 
 		// Return true if at least one deletion succeeded
@@ -283,10 +294,11 @@ class S3StorageService implements StorageService {
 
 	async healthcheck(): Promise<StorageHealthResult> {
 		try {
-			const putCommand = new PutObjectCommand({ Bucket: this.bucket, Key: "healthcheck", Body: "OK" });
+			await this.ensureClient();
+			const putCommand = new this.commands.PutObjectCommand({ Bucket: this.bucket, Key: "healthcheck", Body: "OK" });
 			await this.client.send(putCommand);
 
-			const deleteCommand = new DeleteObjectCommand({ Bucket: this.bucket, Key: "healthcheck" });
+			const deleteCommand = new this.commands.DeleteObjectCommand({ Bucket: this.bucket, Key: "healthcheck" });
 			await this.client.send(deleteCommand);
 
 			return {

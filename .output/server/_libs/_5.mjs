@@ -1,2 +1,2 @@
-import { f as NodeWebSocketTransport } from "./puppeteer.mjs";
-export { NodeWebSocketTransport };
+import { l as convertPuppeteerChannelToBrowsersChannel } from "./puppeteer.mjs";
+export { convertPuppeteerChannelToBrowsersChannel };

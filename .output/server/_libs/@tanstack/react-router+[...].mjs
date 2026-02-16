@@ -1,4 +1,4 @@
-import { a as __require, s as __toESM, t as __commonJSMin } from "../../_runtime.mjs";
+import { i as __require, o as __toESM, t as __commonJSMin } from "../../_runtime.mjs";
 import { i as require_jsx_runtime } from "../lingui__react+react.mjs";
 import { s as require_react } from "../@ai-sdk/react+[...].mjs";
 import { n as parseHref, t as createBrowserHistory } from "../tanstack__history.mjs";

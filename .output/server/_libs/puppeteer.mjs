@@ -1,4 +1,4 @@
-import { a as __require, n as __esmMin, o as __toCommonJS, r as __exportAll, s as __toESM, t as __commonJSMin } from "../_runtime.mjs";
+import { a as __toCommonJS, i as __require, n as __esmMin, o as __toESM, r as __exportAll, t as __commonJSMin } from "../_runtime.mjs";
 import { S as ChromeReleaseChannel, a as TimeoutError$1, c as computeSystemExecutablePath, f as detectBrowserPlatform, h as resolveBuildId, l as launch$2, n as uninstall, o as WEBDRIVER_BIDI_WEBSOCKET_ENDPOINT_REGEX, p as createProfile, r as CDP_WEBSOCKET_ENDPOINT_REGEX, s as computeExecutablePath, t as getInstalledBrowsers, v as require_src, y as Browser$1 } from "./@puppeteer/browsers+[...].mjs";
 import { t as require_dist } from "./cosmiconfig+[...].mjs";
 import { PassThrough } from "node:stream";
@@ -2789,7 +2789,7 @@ var debugModule = null;
 * @internal
 */
 async function importDebug() {
-	if (!debugModule) debugModule = (await import("./_3.mjs").then((m) => /* @__PURE__ */ __toESM(m.default, 1))).default;
+	if (!debugModule) debugModule = (await import("./_2.mjs").then((m) => /* @__PURE__ */ __toESM(m.default, 1))).default;
 	return debugModule;
 }
 /**
@@ -20009,7 +20009,7 @@ async function _connectToBiDiBrowser(connectionTransport, url, options) {
 	const { bidiConnection, cdpConnection, closeCallback } = await getBiDiConnection(connectionTransport, url, options);
 	return await (await import(
 		/* webpackIgnore: true */
-		"./_22.mjs"
+		"./_10.mjs"
 )).BidiBrowser.create({
 		connection: bidiConnection,
 		cdpConnection,
@@ -20031,7 +20031,7 @@ async function _connectToBiDiBrowser(connectionTransport, url, options) {
 async function getBiDiConnection(connectionTransport, url, options) {
 	const BiDi = await import(
 		/* webpackIgnore: true */
-		"./_22.mjs"
+		"./_10.mjs"
 );
 	const { slowMo = 0, protocolTimeout, idGenerator = createIncrementalIdGenerator() } = options;
 	const pureBidiConnection = new BiDi.BidiConnection(url, connectionTransport, idGenerator, slowMo, protocolTimeout);
@@ -20063,7 +20063,7 @@ async function getBiDiConnection(connectionTransport, url, options) {
 * SPDX-License-Identifier: Apache-2.0
 */
 var getWebSocketTransportClass = async () => {
-	return isNode ? (await import("./_5.mjs")).NodeWebSocketTransport : (await import("./_2.mjs")).BrowserWebSocketTransport;
+	return isNode ? (await import("./_4.mjs")).NodeWebSocketTransport : (await import("./_.mjs")).BrowserWebSocketTransport;
 };
 /**
 * Users should never call this directly; it's called when calling
@@ -20098,10 +20098,10 @@ async function getConnectionTransport(options) {
 			endpointUrl: connectionURL
 		};
 	} else if (options.channel && isNode) {
-		const { detectBrowserPlatform, resolveDefaultUserDataDir, Browser } = await import("./_4.mjs");
+		const { detectBrowserPlatform, resolveDefaultUserDataDir, Browser } = await import("./_3.mjs");
 		const platform = detectBrowserPlatform();
 		if (!platform) throw new Error("Could not detect required browser platform");
-		const { convertPuppeteerChannelToBrowsersChannel } = await import("./_6.mjs");
+		const { convertPuppeteerChannelToBrowsersChannel } = await import("./_5.mjs");
 		const { join } = await import("node:path");
 		const portPath = join(resolveDefaultUserDataDir(Browser.CHROME, platform, convertPuppeteerChannelToBrowsersChannel(options.channel)), "DevToolsActivePort");
 		try {
@@ -23457,7 +23457,7 @@ var BrowserLauncher = class {
 		const bidiOnly = process.env["PUPPETEER_WEBDRIVER_BIDI_ONLY"] === "true";
 		const BiDi = await import(
 			/* webpackIgnore: true */
-			"./_22.mjs"
+			"./_10.mjs"
 );
 		const bidiConnection = await BiDi.connectBidiOverCdp(cdpConnection);
 		return await BiDi.BidiBrowser.create({
@@ -23478,7 +23478,7 @@ var BrowserLauncher = class {
 		const transport = await NodeWebSocketTransport.create(browserWSEndpoint);
 		const BiDi = await import(
 			/* webpackIgnore: true */
-			"./_22.mjs"
+			"./_10.mjs"
 );
 		const bidiConnection = new BiDi.BidiConnection(browserWSEndpoint, transport, opts.idGenerator, opts.slowMo, opts.protocolTimeout);
 		return await BiDi.BidiBrowser.create({
