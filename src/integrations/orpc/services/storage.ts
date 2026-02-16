@@ -217,12 +217,25 @@ class S3StorageService implements StorageService {
 	private async ensureClient() {
 		if (this.client) return;
 
-		// Dynamically import AWS SDK only when needed
-		const { S3Client } = await import("@aws-sdk/client-s3");
-		const commands = await import("@aws-sdk/client-s3");
+		// Dynamically import AWS SDK using createRequire to bypass Vite bundling
+		const { createRequire } = await import("node:module");
+		const require = createRequire(import.meta.url);
+
+		const {
+			S3Client,
+			ListObjectsV2Command,
+			PutObjectCommand,
+			GetObjectCommand,
+			DeleteObjectCommand,
+		} = require("@aws-sdk/client-s3");
 
 		this.S3Client = S3Client;
-		this.commands = commands;
+		this.commands = {
+			ListObjectsV2Command,
+			PutObjectCommand,
+			GetObjectCommand,
+			DeleteObjectCommand,
+		};
 
 		this.client = new S3Client({
 			region: env.S3_REGION,
