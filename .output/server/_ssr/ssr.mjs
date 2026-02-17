@@ -1,2 +1,2 @@
-import { V as server_default, m as createServerEntry } from "./vendor-react-5BBUOSGM.mjs";
+import { _ as server_default, a as createServerEntry } from "./vendor-react-DpiQ1Spv.mjs";
 export { createServerEntry, server_default as default };

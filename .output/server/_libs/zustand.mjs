@@ -17,20 +17,6 @@ var createImpl = (createState) => {
 	return useBoundStore;
 };
 var create = ((createState) => createState ? createImpl(createState) : createImpl);
-var immerImpl = (initializer) => (set, get, store) => {
-	store.setState = (updater, replace, ...args) => {
-		return set(typeof updater === "function" ? produce(updater) : updater, replace, ...args);
-	};
-	return initializer(store.setState, get, store);
-};
-var immer = immerImpl;
-var { useSyncExternalStoreWithSelector } = (/* @__PURE__ */ __toESM(require_with_selector(), 1)).default;
-var identity = (arg) => arg;
-function useStoreWithEqualityFn(api, selector = identity, equalityFn) {
-	const slice = useSyncExternalStoreWithSelector(api.subscribe, api.getState, api.getInitialState, selector, equalityFn);
-	import_react.useDebugValue(slice);
-	return slice;
-}
 function createJSONStorage(getStorage, options) {
 	let storage;
 	try {
@@ -183,4 +169,18 @@ var persistImpl = (config, baseOptions) => (set, get, api) => {
 	return stateFromStorage || configResult;
 };
 var persist = persistImpl;
-export { create as a, immer as i, persist as n, useStoreWithEqualityFn as r, createJSONStorage as t };
+var immerImpl = (initializer) => (set, get, store) => {
+	store.setState = (updater, replace, ...args) => {
+		return set(typeof updater === "function" ? produce(updater) : updater, replace, ...args);
+	};
+	return initializer(store.setState, get, store);
+};
+var immer = immerImpl;
+var { useSyncExternalStoreWithSelector } = (/* @__PURE__ */ __toESM(require_with_selector(), 1)).default;
+var identity = (arg) => arg;
+function useStoreWithEqualityFn(api, selector = identity, equalityFn) {
+	const slice = useSyncExternalStoreWithSelector(api.subscribe, api.getState, api.getInitialState, selector, equalityFn);
+	import_react.useDebugValue(slice);
+	return slice;
+}
+export { create as a, persist as i, immer as n, createJSONStorage as r, useStoreWithEqualityFn as t };
