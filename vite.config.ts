@@ -17,6 +17,10 @@ const config = defineConfig({
 		external: ["pdfjs-dist", "mammoth"],
 	},
 
+	optimizeDeps: {
+		include: ["@radix-ui/react-alert-dialog", "@radix-ui/react-context", "@radix-ui/react-primitive", "@radix-ui/react-use-controllable-state", "radix-ui"],
+	},
+
 	resolve: {
 		tsconfigPaths: true,
 	},
