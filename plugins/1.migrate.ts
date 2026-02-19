@@ -26,5 +26,5 @@ async function migrateDatabase() {
 }
 
 export default definePlugin(async () => {
-	await migrateDatabase();
+	// await migrateDatabase();
 });
