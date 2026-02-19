@@ -35,12 +35,14 @@ export const getRouter = async () => {
 		context: { orpc, queryClient, theme, locale, session, flags },
 	});
 
+	/*
 	setupRouterSsrQueryIntegration({
 		router,
 		queryClient,
 		handleRedirects: true,
 		wrapQueryClient: true,
 	});
+	*/
 
 	return router;
 };
