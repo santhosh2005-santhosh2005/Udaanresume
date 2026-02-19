@@ -1,2 +1,0 @@
-import{us as e}from"./vendor-react-Bhh2tWxN.js";var t=e();function n(){return(0,t.jsx)(`div`,{children:`Hello "/auth/verify-email"!`})}export{n as component};
-//# sourceMappingURL=verify-email-nlOLozIb.js.map

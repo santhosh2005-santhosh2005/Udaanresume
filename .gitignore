@@ -130,3 +130,6 @@ Thumbs.db
 
 # Vercel
 .vercel
+
+# Nitro / TanStack Start output
+.output

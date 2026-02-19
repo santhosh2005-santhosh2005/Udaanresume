@@ -83,7 +83,12 @@ const config = defineConfig({
 	plugins: [
 		lingui(),
 		tailwindcss(),
-		nitro({ plugins: ["plugins/1.migrate.ts"] }),
+		nitro({
+			plugins: ["plugins/1.migrate.ts"],
+			externals: {
+				inline: ["@radix-ui/react-alert-dialog", "@radix-ui/react-context", "@radix-ui/react-primitive", "@radix-ui/react-use-controllable-state", "radix-ui"],
+			},
+		}),
 		tanstackStart({ router: { semicolons: true, quoteStyle: "double" } }),
 		viteReact({ babel: { plugins: ["@lingui/babel-plugin-lingui-macro"] } }),
 		VitePWA({
